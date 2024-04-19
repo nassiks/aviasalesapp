@@ -1,0 +1,24 @@
+@import "src/utils/scss/base/_vars";
+
+.filter-panel {
+  font-family: "Open Sans", "Arial", sans-serif;
+  display: flex;
+  flex-direction: column;
+  max-height: 252px;
+  color: $textColor;
+  background-color: $whiteColor;
+  border-radius: $borderRadius;
+  padding: 20px;
+  gap: $baseGap / 2;
+  font-size: 13px;
+  line-height: 20px;
+  box-shadow: $boxShadow;
+}
+
+.filter-panel__title{
+  text-transform: uppercase;
+  font-size: $fontSizeBase;
+  line-height: 12px;
+  letter-spacing: 0.5px;
+  color: $textColor;
+}

@@ -1,0 +1,10 @@
+@import "src/utils/scss/base/_vars";
+
+.show-more-button {
+  padding: 15px 20px;
+  background-color: $blueColor;
+  color: $whiteColor;
+  border: none;
+  border-radius: $borderRadius;
+  cursor: pointer;
+}

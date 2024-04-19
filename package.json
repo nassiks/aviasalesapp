@@ -53,16 +53,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
+    "node-sass": "^9.0.0",
     "prettier": "^3.2.5"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nassiks/aviasalesapp.git"
-  },
-  "author": "Anastasia",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/nassiks/aviasalesapp/issues"
-  },
-  "homepage": "https://github.com/nassiks/aviasalesapp#readme"
+  }
 }

@@ -1,0 +1,63 @@
+@import "src/utils/scss/base/_vars";
+
+.flight-card{
+  display: flex;
+  flex-direction: column;
+  gap: $baseGap;
+  background-color: white;
+  border-radius: $borderRadius;
+  border: none;
+  box-shadow: $boxShadow;
+  max-height: 184px;
+  padding: 20px;
+}
+
+.flight-card__header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+
+  .flight-card__logo {
+    width: 110px;
+    height: 40px;
+  }
+
+  .flight-card__logo img{
+    width: 100%;
+    height: auto;
+  }
+
+  .flight-card__price {
+    text-transform: uppercase;
+    color: $blueColor;
+    font-size: $fontSizeLarge;
+    font-weight: 600;
+    line-height: 24px;
+  }
+}
+
+.flight-card__body {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.flight-card__body-rote, .flight-card__body-length,  .flight-card__body-stops{
+  display: flex;
+  flex-direction: column;
+}
+
+.flight-card__label {
+  text-transform: uppercase;
+  color: $textHeaderColor;
+  font-size: $fontSizeBase;
+  line-height: 18px;
+  letter-spacing: 0.5px;
+}
+
+.flight-card__text {
+  color: $textColor;
+  font-size: $fontSizeSmall;
+  line-height: 21px;
+}
+
