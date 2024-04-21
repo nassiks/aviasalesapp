@@ -45,6 +45,8 @@
 .flight-card__body-rote, .flight-card__body-length,  .flight-card__body-stops{
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  flex-basis: 0;
 }
 
 .flight-card__label {
