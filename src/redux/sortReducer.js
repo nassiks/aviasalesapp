@@ -7,7 +7,10 @@ const initialState = {
 export const sortReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_SORT:
-      return action.payload
+      return {
+        ...state,
+        sortField: action.payload,
+      }
     default:
       return state
   }
