@@ -1,74 +1,48 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { toggleCheckbox, toggleAllCheckboxes } from '../../../redux/actions'
 
 import styles from './checkbox-group.module.scss'
 const CheckboxGroup = () => {
+  const dispatch = useDispatch()
+  const checkboxes = useSelector((state) => state.checkboxes)
+
+  const checkboxData = [
+    { id: 'all', label: 'Все' },
+    { id: 'value1', label: 'Без пересадок' },
+    { id: 'value2', label: '1 пересадка' },
+    { id: 'value3', label: '2 пересадки' },
+    { id: 'value4', label: '3 пересадки' },
+  ]
+
+  const handleChange = (e) => {
+    const { id, checked, name } = e.target
+    if (name === 'all') {
+      dispatch(toggleAllCheckboxes(checked))
+    } else {
+      dispatch(toggleCheckbox(id))
+    }
+  }
+
   return (
     <form className={styles['checkbox-group']}>
-      <div className={styles['checkbox-group__item']}>
-        <input
-          id="value1"
-          type="checkbox"
-          name="value1"
-          value="value1"
-          className={styles['checkbox-group__item-checkbox']}
-        />
-        <span className={styles['checkbox-group__item-checkmark']}></span>
-        <label htmlFor="value1" className={styles['checkbox-group__item-label']}>
-          Все
-        </label>
-      </div>
-      <div className={styles['checkbox-group__item']}>
-        <input
-          id="value2"
-          type="checkbox"
-          name="value2"
-          value="value2"
-          className={styles['checkbox-group__item-checkbox']}
-        />
-        <span className={styles['checkbox-group__item-checkmark']}></span>
-        <label htmlFor="value2" className={styles['checkbox-group__item-label']}>
-          Без пересадок
-        </label>
-      </div>
-      <div className={styles['checkbox-group__item']}>
-        <input
-          id="value3"
-          type="checkbox"
-          name="value3"
-          value="value3"
-          className={styles['checkbox-group__item-checkbox']}
-        />
-        <span className={styles['checkbox-group__item-checkmark']}></span>
-        <label htmlFor="value3" className={styles['checkbox-group__item-label']}>
-          1 пересадка
-        </label>
-      </div>
-      <div className={styles['checkbox-group__item']}>
-        <input
-          id="value4"
-          type="checkbox"
-          name="value4"
-          value="value4"
-          className={styles['checkbox-group__item-checkbox']}
-        />
-        <span className={styles['checkbox-group__item-checkmark']}></span>
-        <label htmlFor="value4" className={styles['checkbox-group__item-label']}>
-          2 пересадки
-        </label>
-      </div>
-      <div className={styles['checkbox-group__item']}>
-        <input
-          id="value5"
-          type="checkbox"
-          name="value5"
-          value="value5"
-          className={styles['checkbox-group__item-checkbox']}
-        />
-        <span className={styles['checkbox-group__item-checkmark']}></span>
-        <label htmlFor="value5" className={styles['checkbox-group__item-label']}>
-          3 пересадки
-        </label>
-      </div>
+      {checkboxData.map(({ id, label }) => (
+        <div key={id} className={styles['checkbox-group__item']}>
+          <input
+            id={id}
+            type="checkbox"
+            name={id}
+            checked={checkboxes[id]}
+            onChange={handleChange}
+            className={styles['checkbox-group__item-checkbox']}
+          />
+          <span className={styles['checkbox-group__item-checkmark']}></span>
+          <label htmlFor={id} className={styles['checkbox-group__item-label']}>
+            {label}
+          </label>
+        </div>
+      ))}
     </form>
   )
 }
