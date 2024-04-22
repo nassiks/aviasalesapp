@@ -1,23 +1,37 @@
 import {
   TOGGLE_CHECKBOX,
-  TOGGLE_ALL_CHECKBOXES,
   SET_SORT,
   FETCH_TICKETS_FAILURE,
   FETCH_TICKETS_SUCCESS,
   FETCH_TICKETS_START,
+  SORT_BY_FASTEST,
+  SORT_BY_CHEAPEST,
+  SORT_BY_OPTIMAL,
+  UPDATE_ITEMS,
 } from './types'
 
 export const setSort = (sortField) => ({
   type: SET_SORT,
   payload: sortField,
 })
-export const toggleCheckbox = (checkboxId) => ({
-  type: TOGGLE_CHECKBOX,
-  payload: checkboxId,
+export const updateItems = (items) => ({
+  type: UPDATE_ITEMS,
+  payload: items,
 })
-export const toggleAllCheckboxes = (isChecked) => ({
-  type: TOGGLE_ALL_CHECKBOXES,
-  payload: isChecked,
+export const toggleCheckbox = (checkboxId, isChecked = null) => ({
+  type: TOGGLE_CHECKBOX,
+  payload: { checkboxId, isChecked },
+})
+export const sortByCheapest = () => ({
+  type: SORT_BY_CHEAPEST,
+})
+
+export const sortByFastest = () => ({
+  type: SORT_BY_FASTEST,
+})
+
+export const sortByOptimal = () => ({
+  type: SORT_BY_OPTIMAL,
 })
 
 export const fetchTicketsStart = () => ({
@@ -26,7 +40,7 @@ export const fetchTicketsStart = () => ({
 
 export const fetchTicketsSuccess = (tickets) => ({
   type: FETCH_TICKETS_SUCCESS,
-  payload: tickets.slice(0, 5),
+  payload: tickets,
 })
 
 export const fetchTicketsFailure = (error) => ({
@@ -45,6 +59,7 @@ export const fetchTickets = () => {
       const response = await fetch(`https://aviasales-test-api.kata.academy/tickets?searchId=${searchId}`)
       const data = await response.json()
       dispatch(fetchTicketsSuccess(data.tickets))
+      dispatch(updateItems(data.tickets))
     } catch (error) {
       dispatch(fetchTicketsFailure(error.message))
     }

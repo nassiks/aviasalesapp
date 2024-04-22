@@ -8,7 +8,6 @@
 }
 
 .sort-panel__button {
-  font-family: "Open Sans", "Arial", sans-serif;
   font-size: $fontSizeBase;
   text-transform: uppercase;
   line-height: 20px;
@@ -18,6 +17,9 @@
   padding: 15px;
   cursor: pointer;
   border-right: 1px solid $borderColor;
+  width: 100%;
+  white-space: nowrap;
+  transition: background-color 0.1s ease, color 0.1s ease;
 
   &:last-child {
     border-right: none;
@@ -29,9 +31,20 @@
     border-top-left-radius: $borderRadius;
     border-bottom-left-radius: $borderRadius;
   }
+
+  &:hover{
+    background-color: $hoverCheckboxColor;
+    color: $textColor;
+  }
 }
 
 .sort-panel__button-active{
   color: $whiteColor;
   background-color: $blueColor;
+}
+
+@media (max-width: 768px){
+  .sort-panel__button{
+    white-space: pre-wrap;
+  }
 }

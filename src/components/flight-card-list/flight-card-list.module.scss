@@ -1,5 +1,12 @@
+@import "src/utils/scss/base/_vars";
+
 .flight-card-list {
   display: flex;
   flex-direction: column;
-  gap: 20px
+  gap: $baseGap;
+}
+@media (max-width: 768px){
+  .flight-card-list {
+    gap: $baseGap - 10px;
+  }
 }

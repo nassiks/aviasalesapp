@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { setSort } from '../../redux/actions'
+import { setSort, sortByCheapest, sortByFastest, sortByOptimal } from '../../redux/actions'
 
 import styles from './sort-panel.module.scss'
 
@@ -16,7 +16,20 @@ const SortPanel = () => {
   ]
 
   const handleSortChange = (sortType) => {
-    dispatch(setSort(sortType))
+    switch (sortType) {
+      case 'cheapest':
+        dispatch(sortByCheapest())
+        break
+      case 'fastest':
+        dispatch(sortByFastest())
+        break
+      case 'optimal':
+        dispatch(sortByOptimal())
+        break
+      default:
+        dispatch(setSort(sortType))
+        break
+    }
   }
 
   return (
