@@ -25,6 +25,7 @@
 
     .app-body{
       gap: $baseGap - 10px;
+      flex-direction: column;
     }
   }
 }

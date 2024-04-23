@@ -32,10 +32,6 @@
     border-bottom-left-radius: $borderRadius;
   }
 
-  &:hover{
-    background-color: $hoverCheckboxColor;
-    color: $textColor;
-  }
 }
 
 .sort-panel__button-active{
